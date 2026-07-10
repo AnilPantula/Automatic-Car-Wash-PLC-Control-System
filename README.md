@@ -117,7 +117,7 @@ The core routine runs the full wash cycle as timer-driven state logic:
 <!-- 📷 replace with ladder screenshot of the reset routine -->
 ![Reset Logic](Images/logic-reset.png)
 
-On completion of the dry cycle, the logic clears all active states and returns the system to the ready state — automatically armed and waiting for the next vehicle with no operator input.
+Once the vehicle exits the bay, the **Car Out** condition (`Car_Out.DN`) is activated. This energizes the OTE that resets the car wash sequence back to **State 0 — the beginning** — clearing all active states and returning the system to ready, automatically armed for the next vehicle with no operator input.
 
 <!-- 🎥 -->
 [▶ Reset.mp4](Videos/Reset.mp4)
