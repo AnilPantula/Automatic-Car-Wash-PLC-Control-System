@@ -31,6 +31,22 @@
 
 ---
 
+## 📌 Project Overview
+
+An Allen-Bradley CompactLogix PLC system that fully automates an industrial car wash, from vehicle detection through soap, wash, dry, and exit, with no operator input.
+
+### 🎯 Control Objectives
+
+- Automatically detect an incoming vehicle before the cycle starts.
+- Run the full soap, wash, and dry sequence without operator intervention.
+- Prevent overlapping stages so only one operation is ever active at a time.
+- Position the vehicle using conveyor motion and limit-switch feedback.
+- Time each stage with independent presets that trigger the next step automatically.
+- Stop instantly and de-energize every output on Master Stop.
+- Return to the ready state (State 0) automatically for the next vehicle.
+
+---
+
 ## ⭐ Project Highlights
 
 | Feature | Value |
@@ -42,16 +58,6 @@
 | **Communication** | EtherNet/IP |
 | **Control Type** | Sequential, Timer-Based State Control |
 | **Testing** | Validated on Allen-Bradley Hardware |
-
----
-
-## 📌 Project Overview
-
-A fully automated PLC control system that detects a vehicle entering the wash bay and runs a complete washing sequence (soap, wash, convey, dry, and exit) with no operator intervention.
-
-Pressing **Master Start** arms the system into a ready state. When the **Car Detection** sensor sees a vehicle, the PLC steps through each stage on preset timers, advancing position via a **limit switch**, and automatically resets for the next vehicle.
-
-The project demonstrates **sequential process automation, timer-based control, sensor and limit-switch integration, conveyor control, HMI development, and state-based industrial programming**, including a **Master Stop** that de-energizes every output instantly.
 
 ---
 
