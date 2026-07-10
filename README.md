@@ -96,39 +96,20 @@ READY -. Repeat Cycle .-> DETECT
 
 ## ⚙️ PLC Logic
 
-### Sequential Process
+### Sequential Process, Timers, Vehicle Detection & Dryer
 
-<!-- 📷 replace with ladder screenshot of the sequence/state routine -->
-![Sequential Process Logic](Images/logic-sequential-process.png)
+<!-- 📷 replace with the ladder screenshot containing the full sequence -->
+![Core Process Logic](Images/logic-core-process.png)
 
-State-based logic steps the vehicle through soap, wash, convey, dry, and exit in a fixed order. Each stage only starts once the previous stage completes.
+The core routine runs the full wash cycle as timer-driven state logic:
 
-<!-- 🎥 -->
-[▶ SequentialProcess.mp4](Videos/SequentialProcess.mp4)
-
----
-
-### Timer Logic
-
-<!-- 📷 replace with ladder screenshot of the timer routines -->
-![Timer Logic](Images/logic-timers.png)
-
-Independent soap, wash, and dry timers set each stage duration. Timer-done bits drive the automatic transition to the next state.
+- **Vehicle Detection** — with the system armed, the car-detection sensor is the permissive that launches the cycle, preventing any start on an empty bay.
+- **Sequential States** — steps soap → wash → dry → exit in a fixed order; each stage energizes only after the previous one completes, so operations never overlap.
+- **Timers** — independent soap, wash, and dry presets set each stage's duration, and their timer-done bits drive the automatic transition to the next state.
+- **Dryer & Reset** — the dryer runs its preset time, then the logic clears all states and returns to ready, auto-reset for the next vehicle.
 
 <!-- 🎥 -->
-[▶ TimerLogic.mp4](Videos/TimerLogic.mp4)
-
----
-
-### Vehicle Detection
-
-<!-- 📷 replace with ladder screenshot of the detection routine -->
-![Vehicle Detection Logic](Images/logic-vehicle-detection.png)
-
-The car-detection sensor is the permissive that launches the wash cycle from the ready state, and prevents the sequence from starting on an empty bay.
-
-<!-- 🎥 -->
-[▶ VehicleDetection.mp4](Videos/VehicleDetection.mp4)
+[▶ ProcessLogic.mp4](Videos/ProcessLogic.mp4)
 
 ---
 
@@ -141,18 +122,6 @@ The conveyor moves the vehicle between stations and out of the bay, stopping pre
 
 <!-- 🎥 -->
 [▶ ConveyorControl.mp4](Videos/ConveyorControl.mp4)
-
----
-
-### Dryer Logic
-
-<!-- 📷 replace with ladder screenshot of the dryer routine -->
-![Dryer Logic](Images/logic-dryer.png)
-
-The dryer energizes after wash completion and runs for the preset drying time before the vehicle is conveyed out.
-
-<!-- 🎥 -->
-[▶ DryerLogic.mp4](Videos/DryerLogic.mp4)
 
 ---
 
