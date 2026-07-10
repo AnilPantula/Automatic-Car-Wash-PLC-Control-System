@@ -1,6 +1,6 @@
-<!-- HERO IMAGE — replace with a wide HMI / process overview screenshot -->
+<!-- HERO IMAGE: replace with a wide HMI / process overview screenshot -->
 <p align="center">
-  <img src="Images/hero-carwash.png" alt="Industrial Car Wash Automation System — HMI Overview" width="100%">
+  <img src="Images/hero-carwash.png" alt="Industrial Car Wash Automation System HMI Overview" width="100%">
 </p>
 
 <h1 align="center">Industrial Car Wash Automation System</h1>
@@ -26,7 +26,7 @@
 
 <!-- Replace with an embedded GIF or a linked MP4/YouTube walkthrough. GIFs autoplay inline on GitHub. -->
 <p align="center">
-  <img src="Videos/system-demo.gif" alt="System demo — full automatic wash cycle" width="90%">
+  <img src="Videos/system-demo.gif" alt="System demo, full automatic wash cycle" width="90%">
 </p>
 
 ---
@@ -47,11 +47,11 @@
 
 ## 📌 Project Overview
 
-A fully automated PLC control system that detects a vehicle entering the wash bay and runs a complete washing sequence — soap, wash, convey, dry, and exit — with no operator intervention.
+A fully automated PLC control system that detects a vehicle entering the wash bay and runs a complete washing sequence (soap, wash, convey, dry, and exit) with no operator intervention.
 
 Pressing **Master Start** arms the system into a ready state. When the **Car Detection** sensor sees a vehicle, the PLC steps through each stage on preset timers, advancing position via a **limit switch**, and automatically resets for the next vehicle.
 
-The project demonstrates **sequential process automation, timer-based control, sensor and limit-switch integration, conveyor control, HMI development, and state-based industrial programming** — with a **Master Stop** that de-energizes every output instantly.
+The project demonstrates **sequential process automation, timer-based control, sensor and limit-switch integration, conveyor control, HMI development, and state-based industrial programming**, including a **Master Stop** that de-energizes every output instantly.
 
 ---
 
@@ -103,9 +103,9 @@ READY -. Repeat Cycle .-> DETECT
 
 The core routine runs the full wash cycle as timer-driven state logic:
 
-- **Vehicle Detection** — with the system armed, the car-detection sensor is the permissive that launches the cycle, preventing any start on an empty bay.
-- **Sequential States** — steps soap → wash → dry → exit in a fixed order; each stage energizes only after the previous one completes, so operations never overlap.
-- **Timers** — independent soap, wash, and dry presets set each stage's duration, and their timer-done bits drive the automatic transition to the next state.
+- **Vehicle Detection**: with the system armed, the car-detection sensor is the permissive that launches the cycle, preventing any start on an empty bay.
+- **Sequential States**: steps soap → wash → dry → exit in a fixed order; each stage energizes only after the previous one completes, so operations never overlap.
+- **Timers**: independent soap, wash, and dry presets set each stage's duration, and their timer-done bits drive the automatic transition to the next state.
 
 <!-- 🎥 -->
 [▶ ProcessLogic.mp4](Videos/ProcessLogic.mp4)
@@ -117,7 +117,7 @@ The core routine runs the full wash cycle as timer-driven state logic:
 <!-- 📷 replace with ladder screenshot of the reset routine -->
 ![Reset Logic](Images/logic-reset.png)
 
-Once the vehicle exits the bay, the **Car Out** condition (`Car_Out.DN`) is activated. This energizes the OTE that resets the car wash sequence back to **State 0 — the beginning** — clearing all active states and returning the system to ready, automatically armed for the next vehicle with no operator input.
+Once the vehicle exits the bay, the **Car Out** condition (`Car_Out.DN`) is activated. This energizes the OTE that resets the car wash sequence back to **State 0**, the beginning, clearing all active states and returning the system to ready, automatically armed for the next vehicle with no operator input.
 
 <!-- 🎥 -->
 [▶ Reset.mp4](Videos/Reset.mp4)
@@ -138,11 +138,11 @@ Master Stop is evaluated ahead of all process logic. Pressing it immediately hal
 
 ## 🧠 Engineering Challenges
 
-- **Maintaining correct process order** — enforcing a strict soap → wash → dry → exit sequence with no skipped or out-of-order stages.
-- **Preventing overlapping operations** — ensuring only one station is active at a time so outputs never energize simultaneously.
-- **Coordinating multiple timers** — sequencing independent soap, wash, and dry timers so each hands off cleanly to the next.
-- **Ensuring automatic reset** — returning the system to the ready state so the next vehicle runs with no manual intervention.
-- **Creating reusable ladder logic** — structuring the program into clean, state-driven routines that are easy to debug and extend.
+- **Maintaining correct process order**: enforcing a strict soap → wash → dry → exit sequence with no skipped or out-of-order stages.
+- **Preventing overlapping operations**: ensuring only one station is active at a time so outputs never energize simultaneously.
+- **Coordinating multiple timers**: sequencing independent soap, wash, and dry timers so each hands off cleanly to the next.
+- **Ensuring automatic reset**: returning the system to the ready state so the next vehicle runs with no manual intervention.
+- **Creating reusable ladder logic**: structuring the program into clean, state-driven routines that are easy to debug and extend.
 
 ---
 
@@ -194,11 +194,11 @@ Master Stop is evaluated ahead of all process logic. Pressing it immediately hal
 
 ## 👤 About the Author
 
-**Anil Pantula** — Electrical Engineering Student, University of Windsor
+**Anil Pantula**, Electrical Engineering Student, University of Windsor
 Automation Technician Co-op @ Asamaka Industries Ltd.
 
 Pursuing roles in Industrial Automation · Controls Engineering · PLC Programming · Robotics · Mechatronics
 
 <!-- Add LinkedIn / email links here -->
 
-<p align="center"><sub>Engineering portfolio project — not an open-source software library.</sub></p>
+<p align="center"><sub>Engineering portfolio project. Not an open-source software library.</sub></p>
