@@ -74,31 +74,23 @@ The project demonstrates **sequential process automation, timer-based control, s
 
 ```mermaid
 flowchart TB
-    subgraph PROCESS["Automatic Wash Sequence"]
-      direction TB
-      VS["Vehicle Detection Sensor"] --> SS["Soap Station"]
-      SS --> WS["Wash Station"]
-      WS --> CV["Conveyor"]
-      CV --> LS["Limit Switch"]
-      LS --> DR["Dryer"]
-      DR --> EX["Exit Conveyor"]
-    end
-    HMI["FactoryTalk View HMI"] <-->|EtherNet/IP| PLC["Allen-Bradley<br/>CompactLogix PLC"]
-    PLC -. controls all stations, timers & sensors .-> PROCESS
+HMI["FactoryTalk View HMI"]
+NET["EtherNet/IP"]
+PLC["Allen-Bradley<br/>CompactLogix PLC"]
+HMI --> NET --> PLC
+PLC --> CTRL["Controls Process Logic<br/>Timers • Sensors • Outputs"]
+CTRL --> DETECT["🚗 Vehicle Detection"]
+DETECT --> SOAP["🧼 Soap Station"]
+SOAP --> WASH["💦 Wash Station"]
+WASH --> CONV["➡️ Conveyor"]
+CONV --> LIMIT["📍 Limit Switch"]
+LIMIT --> DRYER["🌬️ Dryer"]
+DRYER --> EXIT["➡️ Exit Conveyor"]
+EXIT --> READY["Ready for Next Vehicle"]
+READY -. Repeat Cycle .-> DETECT
 ```
 
 <sub>Master Start arms the system; vehicle detection triggers the sequence; each stage advances on a preset timer or limit switch; Master Stop de-energizes all outputs immediately.</sub>
-
----
-
-## 🖼️ Project Gallery
-
-<!-- Drop screenshots into /Images and they render as a grid. -->
-| Main HMI | Sensor Status Screen | Process Overview |
-|:---:|:---:|:---:|
-| ![Main HMI](Images/main-hmi.png) | ![Sensor Status](Images/sensor-status.png) | ![Process Overview](Images/process-overview.png) |
-| **PLC Hardware** | **Studio 5000 Project** | |
-| ![PLC Hardware](Images/plc-hardware.png) | ![Studio 5000](Images/studio5000.png) | |
 
 ---
 
@@ -229,20 +221,6 @@ Master Stop is evaluated ahead of all process logic. Pressing it immediately hal
 ![Commissioning](https://img.shields.io/badge/Commissioning-00897B?style=flat-square)
 ![PLC Troubleshooting](https://img.shields.io/badge/PLC%20Troubleshooting-B71C1C?style=flat-square)
 ![System Validation](https://img.shields.io/badge/System%20Validation-37474F?style=flat-square)
-
----
-
-## 📂 Repository Structure
-
-```
-Industrial-Car-Wash-Automation-System
-├── README.md
-├── Images/
-├── Videos/
-├── Documentation/
-├── PLC-Program/          # Only if you're allowed to share it
-└── Assets/
-```
 
 ---
 
