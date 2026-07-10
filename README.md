@@ -106,22 +106,21 @@ The core routine runs the full wash cycle as timer-driven state logic:
 - **Vehicle Detection** — with the system armed, the car-detection sensor is the permissive that launches the cycle, preventing any start on an empty bay.
 - **Sequential States** — steps soap → wash → dry → exit in a fixed order; each stage energizes only after the previous one completes, so operations never overlap.
 - **Timers** — independent soap, wash, and dry presets set each stage's duration, and their timer-done bits drive the automatic transition to the next state.
-- **Dryer & Reset** — the dryer runs its preset time, then the logic clears all states and returns to ready, auto-reset for the next vehicle.
 
 <!-- 🎥 -->
 [▶ ProcessLogic.mp4](Videos/ProcessLogic.mp4)
 
 ---
 
-### Conveyor Control
+### Automatic Reset
 
-<!-- 📷 replace with ladder screenshot of the conveyor routine -->
-![Conveyor Control Logic](Images/logic-conveyor.png)
+<!-- 📷 replace with ladder screenshot of the reset routine -->
+![Reset Logic](Images/logic-reset.png)
 
-The conveyor moves the vehicle between stations and out of the bay, stopping precisely when the limit switch is reached.
+On completion of the dry cycle, the logic clears all active states and returns the system to the ready state — automatically armed and waiting for the next vehicle with no operator input.
 
 <!-- 🎥 -->
-[▶ ConveyorControl.mp4](Videos/ConveyorControl.mp4)
+[▶ Reset.mp4](Videos/Reset.mp4)
 
 ---
 
