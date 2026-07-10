@@ -148,18 +148,18 @@ Master Stop is evaluated ahead of all process logic. Pressing it immediately hal
 
 ## ✅ Testing & Validation
 
-| Test | Result |
-|------|:------:|
-| Master Start | ✅ Pass |
-| Vehicle Detection | ✅ Pass |
-| Soap Cycle | ✅ Pass |
-| Wash Cycle | ✅ Pass |
-| Conveyor Movement | ✅ Pass |
-| Limit Switch | ✅ Pass |
-| Dryer Cycle | ✅ Pass |
-| Master Stop | ✅ Pass |
-| HMI Communication | ✅ Pass |
-| PLC Communication | ✅ Pass |
+| Function | Status |
+|----------|:------:|
+| Master Start | ✅ Verified |
+| Vehicle Detection | ✅ Verified |
+| Soap Cycle | ✅ Verified |
+| Wash Cycle | ✅ Verified |
+| Conveyor Movement | ✅ Verified |
+| Limit Switch | ✅ Verified |
+| Dryer Cycle | ✅ Verified |
+| Master Stop | ✅ Verified |
+| HMI Communication | ✅ Verified |
+| PLC Communication | ✅ Verified |
 
 ---
 
