@@ -1,1 +1,258 @@
-# Automatic-Car-Wash-PLC-Control-System
+<!-- HERO IMAGE — replace with a wide HMI / process overview screenshot -->
+<p align="center">
+  <img src="Images/hero-carwash.png" alt="Industrial Car Wash Automation System — HMI Overview" width="100%">
+</p>
+
+<h1 align="center">Industrial Car Wash Automation System</h1>
+
+<p align="center">
+  Allen-Bradley CompactLogix PLC control system that automatically detects a vehicle and executes a full soap → wash → dry sequence with timer-based, state-driven control and FactoryTalk View HMI supervision.
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Allen--Bradley-CC0000?style=for-the-badge&logo=rockwellautomation&logoColor=white">
+  <img src="https://img.shields.io/badge/Studio%205000-004B87?style=for-the-badge">
+  <img src="https://img.shields.io/badge/CompactLogix%205370-E32119?style=for-the-badge">
+  <img src="https://img.shields.io/badge/FactoryTalk%20View-F58025?style=for-the-badge">
+  <img src="https://img.shields.io/badge/PanelView%20Plus-6A1B9A?style=for-the-badge">
+  <img src="https://img.shields.io/badge/RSLinx%20Classic-1F6FB2?style=for-the-badge">
+  <img src="https://img.shields.io/badge/Ladder%20Logic-2E8B57?style=for-the-badge">
+  <img src="https://img.shields.io/badge/EtherNet%2FIP-0072C6?style=for-the-badge">
+</p>
+
+---
+
+## ▶️ Demo
+
+<!-- Replace with an embedded GIF or a linked MP4/YouTube walkthrough. GIFs autoplay inline on GitHub. -->
+<p align="center">
+  <img src="Videos/system-demo.gif" alt="System demo — full automatic wash cycle" width="90%">
+</p>
+
+---
+
+## ⭐ Project Highlights
+
+| Feature | Value |
+|---------|-------|
+| **Process** | Fully Automatic Soap → Wash → Dry Cycle |
+| **PLC** | Allen-Bradley CompactLogix 5370 |
+| **HMI** | FactoryTalk View + PanelView Plus |
+| **IDE** | Studio 5000 Logix Designer |
+| **Communication** | EtherNet/IP |
+| **Control Type** | Sequential, Timer-Based State Control |
+| **Testing** | Validated on Allen-Bradley Hardware |
+
+---
+
+## 📌 Project Overview
+
+A fully automated PLC control system that detects a vehicle entering the wash bay and runs a complete washing sequence — soap, wash, convey, dry, and exit — with no operator intervention.
+
+Pressing **Master Start** arms the system into a ready state. When the **Car Detection** sensor sees a vehicle, the PLC steps through each stage on preset timers, advancing position via a **limit switch**, and automatically resets for the next vehicle.
+
+The project demonstrates **sequential process automation, timer-based control, sensor and limit-switch integration, conveyor control, HMI development, and state-based industrial programming** — with a **Master Stop** that de-energizes every output instantly.
+
+---
+
+## ✨ Features
+
+- ✔ Automatic Vehicle Detection
+- ✔ Sequential Process Control (Soap → Wash → Dry)
+- ✔ Timer-Based Cycle Control
+- ✔ Conveyor Motor Control
+- ✔ Limit-Switch Positioning
+- ✔ Automatic State Transitions
+- ✔ Process Interlocks
+- ✔ Master Start / Master Stop Safety
+- ✔ Automatic Reset for Next Vehicle
+- ✔ Live HMI Monitoring
+
+---
+
+## 🏗️ System Architecture
+
+```mermaid
+flowchart TB
+    subgraph PROCESS["Automatic Wash Sequence"]
+      direction TB
+      VS["Vehicle Detection Sensor"] --> SS["Soap Station"]
+      SS --> WS["Wash Station"]
+      WS --> CV["Conveyor"]
+      CV --> LS["Limit Switch"]
+      LS --> DR["Dryer"]
+      DR --> EX["Exit Conveyor"]
+    end
+    HMI["FactoryTalk View HMI"] <-->|EtherNet/IP| PLC["Allen-Bradley<br/>CompactLogix PLC"]
+    PLC -. controls all stations, timers & sensors .-> PROCESS
+```
+
+<sub>Master Start arms the system; vehicle detection triggers the sequence; each stage advances on a preset timer or limit switch; Master Stop de-energizes all outputs immediately.</sub>
+
+---
+
+## 🖼️ Project Gallery
+
+<!-- Drop screenshots into /Images and they render as a grid. -->
+| Main HMI | Sensor Status Screen | Process Overview |
+|:---:|:---:|:---:|
+| ![Main HMI](Images/main-hmi.png) | ![Sensor Status](Images/sensor-status.png) | ![Process Overview](Images/process-overview.png) |
+| **PLC Hardware** | **Studio 5000 Project** | |
+| ![PLC Hardware](Images/plc-hardware.png) | ![Studio 5000](Images/studio5000.png) | |
+
+---
+
+## ⚙️ PLC Logic
+
+### Sequential Process
+
+<!-- 📷 replace with ladder screenshot of the sequence/state routine -->
+![Sequential Process Logic](Images/logic-sequential-process.png)
+
+State-based logic steps the vehicle through soap, wash, convey, dry, and exit in a fixed order. Each stage only starts once the previous stage completes.
+
+<!-- 🎥 -->
+[▶ SequentialProcess.mp4](Videos/SequentialProcess.mp4)
+
+---
+
+### Timer Logic
+
+<!-- 📷 replace with ladder screenshot of the timer routines -->
+![Timer Logic](Images/logic-timers.png)
+
+Independent soap, wash, and dry timers set each stage duration. Timer-done bits drive the automatic transition to the next state.
+
+<!-- 🎥 -->
+[▶ TimerLogic.mp4](Videos/TimerLogic.mp4)
+
+---
+
+### Vehicle Detection
+
+<!-- 📷 replace with ladder screenshot of the detection routine -->
+![Vehicle Detection Logic](Images/logic-vehicle-detection.png)
+
+The car-detection sensor is the permissive that launches the wash cycle from the ready state, and prevents the sequence from starting on an empty bay.
+
+<!-- 🎥 -->
+[▶ VehicleDetection.mp4](Videos/VehicleDetection.mp4)
+
+---
+
+### Conveyor Control
+
+<!-- 📷 replace with ladder screenshot of the conveyor routine -->
+![Conveyor Control Logic](Images/logic-conveyor.png)
+
+The conveyor moves the vehicle between stations and out of the bay, stopping precisely when the limit switch is reached.
+
+<!-- 🎥 -->
+[▶ ConveyorControl.mp4](Videos/ConveyorControl.mp4)
+
+---
+
+### Dryer Logic
+
+<!-- 📷 replace with ladder screenshot of the dryer routine -->
+![Dryer Logic](Images/logic-dryer.png)
+
+The dryer energizes after wash completion and runs for the preset drying time before the vehicle is conveyed out.
+
+<!-- 🎥 -->
+[▶ DryerLogic.mp4](Videos/DryerLogic.mp4)
+
+---
+
+### Master Stop Safety Logic
+
+<!-- 📷 replace with ladder screenshot of the Master Stop routine -->
+![Master Stop Logic](Images/logic-master-stop.png)
+
+Master Stop is evaluated ahead of all process logic. Pressing it immediately halts the sequence and de-energizes every output regardless of the current state.
+
+<!-- 🎥 -->
+[▶ MasterStop.mp4](Videos/MasterStop.mp4)
+
+---
+
+## 🧠 Engineering Challenges
+
+- **Maintaining correct process order** — enforcing a strict soap → wash → dry → exit sequence with no skipped or out-of-order stages.
+- **Preventing overlapping operations** — ensuring only one station is active at a time so outputs never energize simultaneously.
+- **Coordinating multiple timers** — sequencing independent soap, wash, and dry timers so each hands off cleanly to the next.
+- **Ensuring automatic reset** — returning the system to the ready state so the next vehicle runs with no manual intervention.
+- **Creating reusable ladder logic** — structuring the program into clean, state-driven routines that are easy to debug and extend.
+
+---
+
+## ✅ Testing & Validation
+
+| Test | Result |
+|------|:------:|
+| Master Start | ✅ Pass |
+| Vehicle Detection | ✅ Pass |
+| Soap Cycle | ✅ Pass |
+| Wash Cycle | ✅ Pass |
+| Conveyor Movement | ✅ Pass |
+| Limit Switch | ✅ Pass |
+| Dryer Cycle | ✅ Pass |
+| Master Stop | ✅ Pass |
+| HMI Communication | ✅ Pass |
+| PLC Communication | ✅ Pass |
+
+---
+
+## 📈 Results
+
+- ✔ Developed a complete PLC program for a fully automatic car wash sequence
+- ✔ Designed timer-based, state-driven ladder logic with automatic transitions
+- ✔ Integrated vehicle-detection and limit-switch sensing for positioning
+- ✔ Built a FactoryTalk View HMI for real-time process monitoring
+- ✔ Verified PLC I/O and HMI communication on physical Allen-Bradley hardware
+- ✔ Validated the full cycle, automatic reset, and Master Stop safety response
+
+---
+
+## 🛠️ Technical Skills Demonstrated
+
+![PLC Programming](https://img.shields.io/badge/PLC%20Programming-0A66C2?style=flat-square)
+![Studio 5000](https://img.shields.io/badge/Studio%205000-004B87?style=flat-square)
+![FactoryTalk View](https://img.shields.io/badge/FactoryTalk%20View-F58025?style=flat-square)
+![Allen-Bradley](https://img.shields.io/badge/Allen--Bradley-CC0000?style=flat-square)
+![Sequential Control](https://img.shields.io/badge/Sequential%20Control-1565C0?style=flat-square)
+![Industrial Automation](https://img.shields.io/badge/Industrial%20Automation-455A64?style=flat-square)
+![Conveyor Control](https://img.shields.io/badge/Conveyor%20Control-00695C?style=flat-square)
+![Timers](https://img.shields.io/badge/Timers-6A1B9A?style=flat-square)
+![Sensor Integration](https://img.shields.io/badge/Sensor%20Integration-0072C6?style=flat-square)
+![HMI Development](https://img.shields.io/badge/HMI%20Development-F58025?style=flat-square)
+![Commissioning](https://img.shields.io/badge/Commissioning-00897B?style=flat-square)
+![PLC Troubleshooting](https://img.shields.io/badge/PLC%20Troubleshooting-B71C1C?style=flat-square)
+![System Validation](https://img.shields.io/badge/System%20Validation-37474F?style=flat-square)
+
+---
+
+## 📂 Repository Structure
+
+```
+Industrial-Car-Wash-Automation-System
+├── README.md
+├── Images/
+├── Videos/
+├── Documentation/
+├── PLC-Program/          # Only if you're allowed to share it
+└── Assets/
+```
+
+---
+
+## 👤 About the Author
+
+**Anil Pantula** — Electrical Engineering Student, University of Windsor
+Automation Technician Co-op @ Asamaka Industries Ltd.
+
+Pursuing roles in Industrial Automation · Controls Engineering · PLC Programming · Robotics · Mechatronics
+
+<!-- Add LinkedIn / email links here -->
+
+<p align="center"><sub>Engineering portfolio project — not an open-source software library.</sub></p>
