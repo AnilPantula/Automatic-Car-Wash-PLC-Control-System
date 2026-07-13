@@ -1,6 +1,6 @@
 <!-- HERO IMAGE: replace with a wide HMI / process overview screenshot -->
 <p align="center">
-  <img src="Images/hero-carwash.png" alt="Industrial Car Wash Automation System HMI Overview" width="100%">
+  <img src="Car%20Wash-%20main%20pic.png" alt="Industrial Car Wash Automation System HMI Overview" width="100%">
 </p>
 
 <h1 align="center">Industrial Car Wash Automation System</h1>
@@ -105,7 +105,7 @@ READY -. Repeat Cycle .-> DETECT
 ### Sequential Process, Timers, Vehicle Detection & Dryer
 
 <!-- 📷 replace with the ladder screenshot containing the full sequence -->
-![Core Process Logic](Images/logic-core-process.png)
+![Core Process Logic](Car%20wash-%20SequentialTimer.png)
 
 The core routine runs the full wash cycle as timer-driven state logic:
 
@@ -121,7 +121,7 @@ The core routine runs the full wash cycle as timer-driven state logic:
 ### Automatic Reset
 
 <!-- 📷 replace with ladder screenshot of the reset routine -->
-![Reset Logic](Images/logic-reset.png)
+![Reset Logic](Car%20Wash-%20Reset.png)
 
 Once the vehicle exits the bay, the **Car Out** condition (`Car_Out.DN`) is activated. This energizes the OTE that resets the car wash sequence back to **State 0**, the beginning, clearing all active states and returning the system to ready, automatically armed for the next vehicle with no operator input.
 
@@ -133,7 +133,7 @@ Once the vehicle exits the bay, the **Car Out** condition (`Car_Out.DN`) is acti
 ### Master Stop Safety Logic
 
 <!-- 📷 replace with ladder screenshot of the Master Stop routine -->
-![Master Stop Logic](Images/logic-master-stop.png)
+![Master Stop Logic](Car%20wash-%20Master%20stop.png)
 
 Master Stop is evaluated ahead of all process logic. Pressing it immediately halts the sequence and de-energizes every output regardless of the current state.
 
