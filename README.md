@@ -6,7 +6,7 @@
 <h1 align="center">Industrial Car Wash Automation System</h1>
 
 <p align="center">
-  Allen-Bradley CompactLogix PLC control system that automatically detects a vehicle and executes a full soap → wash → dry sequence with timer-based, state-driven control and FactoryTalk View HMI supervision.
+  Industrial PLC automation system that automatically detects vehicles and executes a fully automated soap, wash, conveyor, and drying sequence using state-based ladder logic, timers, sensor feedback, and FactoryTalk View HMI supervision.
 </p>
 
 <p align="center">
@@ -33,7 +33,9 @@
 
 ## 📌 Project Overview
 
-An Allen-Bradley CompactLogix PLC system that fully automates an industrial car wash, from vehicle detection through soap, wash, dry, and exit, with no operator input.
+An industrial process automation application that automatically detects a vehicle and executes a complete soap, wash, conveyor, drying, and exit sequence before resetting for the next vehicle.
+
+The project demonstrates state-based sequencing, timer-driven control, sensor integration, conveyor positioning, process interlocks, and HMI development using Allen-Bradley CompactLogix and FactoryTalk View.
 
 ### 🎯 Control Objectives
 
@@ -57,7 +59,7 @@ An Allen-Bradley CompactLogix PLC system that fully automates an industrial car 
 | **IDE** | Studio 5000 Logix Designer |
 | **Communication** | EtherNet/IP |
 | **Control Type** | Sequential, Timer-Based State Control |
-| **Testing** | Validated on Allen-Bradley Hardware |
+| **Testing** | Commissioned & Tested on Allen-Bradley CompactLogix Hardware |
 
 ---
 
@@ -102,7 +104,7 @@ READY -. Repeat Cycle .-> DETECT
 
 ## ⚙️ PLC Logic
 
-### Sequential Process, Timers, Vehicle Detection & Dryer
+### Sequential Process Control Logic
 
 <!-- 📷 replace with the ladder screenshot containing the full sequence -->
 ![Core Process Logic](Car%20wash-%20SequentialTimer.png)
@@ -120,7 +122,7 @@ The full wash cycle runs as a state machine driven by the `Car_wash_State` tag:
 <!-- 📷 replace with ladder screenshot of the reset routine -->
 ![Reset Logic](Car%20Wash-%20Reset.png)
 
-Once the vehicle exits the bay, the **Car Out** condition (`Car_Out.DN`) is activated. This energizes the OTE that resets the car wash sequence back to **State 0**, the beginning, clearing all active states and returning the system to ready, automatically armed for the next vehicle with no operator input.
+When the vehicle exits the wash bay, the **Car Out** condition resets the state machine back to **State 0**, clearing all active stages and returning the system to the ready state for the next vehicle.
 
 ---
 
@@ -164,6 +166,7 @@ A complete rung-by-rung walkthrough of the program, showing the state machine ad
 | Limit Switch | ✅ Verified |
 | Dryer Cycle | ✅ Verified |
 | Master Stop | ✅ Verified |
+| Automatic Reset | ✅ Verified |
 | HMI Communication | ✅ Verified |
 | PLC Communication | ✅ Verified |
 
@@ -171,12 +174,12 @@ A complete rung-by-rung walkthrough of the program, showing the state machine ad
 
 ## 📈 Results
 
-- ✔ Developed a complete PLC program for a fully automatic car wash sequence
-- ✔ Designed timer-based, state-driven ladder logic with automatic transitions
-- ✔ Integrated vehicle-detection and limit-switch sensing for positioning
-- ✔ Built a FactoryTalk View HMI for real-time process monitoring
-- ✔ Verified PLC I/O and HMI communication on physical Allen-Bradley hardware
-- ✔ Validated the full cycle, automatic reset, and Master Stop safety response
+- ✔ Developed a complete PLC program for a fully automatic car wash process
+- ✔ Designed timer-based, state-driven ladder logic with automatic sequencing
+- ✔ Integrated vehicle detection and limit-switch feedback for positioning
+- ✔ Developed a FactoryTalk View HMI for real-time process monitoring
+- ✔ Verified PLC I/O, HMI communication, and process operation on Allen-Bradley hardware
+- ✔ Validated automatic reset and Master Stop safety functionality
 
 ---
 
