@@ -113,9 +113,6 @@ The full wash cycle runs as a state machine driven by the `Car_wash_State` tag:
 - **Sequential States**: each state energizes a single stage (soap, wash, dry, exit) in a fixed order, so only one operation is ever active at a time.
 - **Timers**: each stage runs its own `TON` (for example, the 5-second `Soap_Sprinkler_timer`), and its `.DN` bit advances `Car_wash_State` to the next step automatically.
 
-<!-- 🎥 -->
-[▶ ProcessLogic.mp4](Videos/ProcessLogic.mp4)
-
 ---
 
 ### Automatic Reset
@@ -124,9 +121,6 @@ The full wash cycle runs as a state machine driven by the `Car_wash_State` tag:
 ![Reset Logic](Car%20Wash-%20Reset.png)
 
 Once the vehicle exits the bay, the **Car Out** condition (`Car_Out.DN`) is activated. This energizes the OTE that resets the car wash sequence back to **State 0**, the beginning, clearing all active states and returning the system to ready, automatically armed for the next vehicle with no operator input.
-
-<!-- 🎥 -->
-[▶ Reset.mp4](Videos/Reset.mp4)
 
 ---
 
@@ -137,18 +131,24 @@ Once the vehicle exits the bay, the **Car Out** condition (`Car_Out.DN`) is acti
 
 Master Stop is evaluated ahead of all process logic. Pressing it immediately halts the sequence and de-energizes every output regardless of the current state.
 
-<!-- 🎥 -->
-[▶ MasterStop.mp4](Videos/MasterStop.mp4)
+---
+
+### Full PLC Logic Walkthrough
+
+<!-- 🎥 link or embed Videos/LogicWalkthrough.mp4 -->
+[▶ LogicWalkthrough.mp4](Videos/LogicWalkthrough.mp4)
+
+A complete rung-by-rung walkthrough of the program, showing the state machine advance through detection, soap, wash, dry, exit, and automatic reset live, with the timers and Master Stop safety response demonstrated in real time.
 
 ---
 
 ## 🧠 Engineering Challenges
 
-- **Maintaining correct process order**: enforcing a strict soap → wash → dry → exit sequence with no skipped or out-of-order stages.
-- **Preventing overlapping operations**: ensuring only one station is active at a time so outputs never energize simultaneously.
-- **Coordinating multiple timers**: sequencing independent soap, wash, and dry timers so each hands off cleanly to the next.
-- **Ensuring automatic reset**: returning the system to the ready state so the next vehicle runs with no manual intervention.
-- **Creating reusable ladder logic**: structuring the program into clean, state-driven routines that are easy to debug and extend.
+- **<ins>Maintaining correct process order</ins>**: enforcing a strict soap → wash → dry → exit sequence with no skipped or out-of-order stages.
+- **<ins>Preventing overlapping operations</ins>**: ensuring only one station is active at a time so outputs never energize simultaneously.
+- **<ins>Coordinating multiple timers</ins>**: sequencing independent soap, wash, and dry timers so each hands off cleanly to the next.
+- **<ins>Ensuring automatic reset</ins>**: returning the system to the ready state so the next vehicle runs with no manual intervention.
+- **<ins>Creating reusable ladder logic</ins>**: structuring the program into clean, state-driven routines that are easy to debug and extend.
 
 ---
 
