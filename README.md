@@ -107,11 +107,11 @@ READY -. Repeat Cycle .-> DETECT
 <!-- 📷 replace with the ladder screenshot containing the full sequence -->
 ![Core Process Logic](Car%20wash-%20SequentialTimer.png)
 
-The core routine runs the full wash cycle as timer-driven state logic:
+The full wash cycle runs as a state machine driven by the `Car_wash_State` tag:
 
-- **Vehicle Detection**: with the system armed, the car-detection sensor is the permissive that launches the cycle, preventing any start on an empty bay.
-- **Sequential States**: steps soap → wash → dry → exit in a fixed order; each stage energizes only after the previous one completes, so operations never overlap.
-- **Timers**: independent soap, wash, and dry presets set each stage's duration, and their timer-done bits drive the automatic transition to the next state.
+- **Vehicle Detection**: with the system ready, `Car_Sensor` moves `Car_wash_State` from 0 to 1 and starts the cycle. On an empty bay it never triggers.
+- **Sequential States**: each state energizes a single stage (soap, wash, dry, exit) in a fixed order, so only one operation is ever active at a time.
+- **Timers**: each stage runs its own `TON` (for example, the 5-second `Soap_Sprinkler_timer`), and its `.DN` bit advances `Car_wash_State` to the next step automatically.
 
 <!-- 🎥 -->
 [▶ ProcessLogic.mp4](Videos/ProcessLogic.mp4)
