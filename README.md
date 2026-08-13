@@ -24,10 +24,9 @@
 
 ## ▶️ Demo
 
-<!-- Replace with an embedded GIF or a linked MP4/YouTube walkthrough. GIFs autoplay inline on GitHub. -->
-<p align="center">
-  <img src="Videos/system-demo.gif" alt="System demo, full automatic wash cycle" width="90%">
-</p>
+<video src="https://github.com/user-attachments/assets/6580d2be-9d8c-4c02-87bc-ba7c1a7be9b5" controls width="90%"></video>
+
+Full automatic soap, wash, and dry cycle running on the HMI.
 
 ---
 
@@ -137,8 +136,7 @@ Master Stop is evaluated ahead of all process logic. Pressing it immediately hal
 
 ### Full PLC Logic Walkthrough
 
-<!-- 🎥 link or embed Videos/LogicWalkthrough.mp4 -->
-[▶ LogicWalkthrough.mp4](Videos/LogicWalkthrough.mp4)
+<video src="https://github.com/user-attachments/assets/36fe628c-214f-4522-bd80-cb4f53a9247f" controls width="90%"></video>
 
 A complete rung-by-rung walkthrough of the program, showing the state machine advance through detection, soap, wash, dry, exit, and automatic reset live, with the timers and Master Stop safety response demonstrated in real time.
 
