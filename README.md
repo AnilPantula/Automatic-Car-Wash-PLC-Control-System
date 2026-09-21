@@ -202,9 +202,8 @@ A complete rung-by-rung walkthrough of the program, showing the state machine ad
 ## 👤 About the Author
 
 **Anil Pantula**, Electrical Engineering Student, University of Windsor
-Automation Technician Co-op @ Asamaka Industries Ltd.
 
-Pursuing roles in Industrial Automation · Controls Engineering · PLC Programming · Robotics · Mechatronics
+Pursuing roles in Industrial Automation · Controls Engineering · PLC Programming · Robotics · Power 
 
 <!-- Add LinkedIn / email links here -->
 
